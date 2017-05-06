@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently -p \"[{name}]\" -n \"XPRESS-COMPILER,WEBPACK,XPRESS\" -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"npm run build-express\" \"npm run build-ng\" \"npm run serve-express\"",
+    "start": "concurrently -p \"[{name}]\" -n \"WEBPACK,XPRESS-COMPILER,XPRESS\" -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"npm run serve-proxy\" \"npm run build-express\" \"npm run serve-express\"",
     "serve": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -12,6 +12,7 @@
     "e2e": "ng e2e",
     "build-express": "tsc -w -p ./server/",
     "build-ng": "ng build --watch",
+    "serve-proxy": "ng serve --proxy-config ./proxy.conf.json",
     "serve-express": "nodemon ./dist-server/app-server.js"
   },
   "private": true,
