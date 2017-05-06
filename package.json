@@ -4,12 +4,15 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently -p \"[{name}]\" -n \"XPRESS-COMPILER,WEBPACK,XPRESS\" -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"npm run build-express\" \"npm run build-ng\" \"npm run serve-express\"",
     "serve": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-express": "tsc -w -p ./server/",
+    "build-ng": "ng build --watch",
+    "serve-express": "nodemon ./dist-server/app-server.js"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +38,7 @@
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
+    "concurrently": "^3.4.0",
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.8",
     "jasmine-core": "~2.5.2",
